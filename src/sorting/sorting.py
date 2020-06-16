@@ -40,19 +40,36 @@ def merge_sort(arr):
     #merge_sort does the splitting of the arrays into halves 
     #base condition
     #if array size >1
-    if len(arr) >1:
-        #find the middle of arr
-        #sort stuff in the left side and put stuff to the left in left side
-                         #from the beginning to the half way point
-        left = merge_sort(arr[0:len(arr)//2 ])
-        #sort stuff in the right side and put stuff to the right in right side
-                                 #from the halfway point to the end
-        right = merge_sort(arr [len(arr)//2:])
+    # if len(arr) >1:
+    #     #find the middle of arr
+    #     #sort stuff in the left side and put stuff to the left in left side
+    #                      #from the beginning index to the half way point in arr
+    #     left = merge_sort(arr[0:len(arr)//2 ])
+    #     #sort stuff in the right side and put stuff to the right in right side
+    #                              #from the halfway point to the end
+    #     right = merge_sort(arr [len(arr)//2:])
 
-        #merge left and right
-        arr = merge(left,right)
+    #     #merge left and right
+    #     arr = merge(left,right)
+
+    # return arr
+
+    #2nd method
+    if len(arr)<=1:
+        return arr
+    
+    else:
+        #find middle index of array
+        middle = len(arr)//2
+        arrLeft = arr[:middle] #values less than middle
+        arrRight = arr[middle:] #values greater than middle
+
+        left = merge_sort(arrLeft) #mergesort the left side
+        right = merge_sort(arrRight) #mergesort the right side
+        arr = merge(left, right)    #merge both sorted left and right sides together
 
     return arr
+
 
 # STRETCH: implement the recursive logic for merge sort in a way that doesn't 
 # utilize any extra memory
