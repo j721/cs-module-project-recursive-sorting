@@ -4,8 +4,27 @@ def merge(arrA, arrB):
     merged_arr = [0] * elements
 
     # Your code here
+    #initialize array a and array b to zero
+    a = 0
+    b = 0
 
-
+    #iterate through the length of both arrays a and b combined
+    for i in range(0, elements):
+        #compare a and b
+        #if a is out of range, push into b array and iterate
+        if a>= len(arrA):
+            merged_arr[i] = arrB[b]
+            b+=1
+        #if b is out of range, push into array and iterate through array a   
+        elif b>= len(arrB):
+            merged_arr[i] =arrA[a]
+            a +=1
+        #if a element at arrA index is smaller, than put into merged array and iterate both
+        elif arrA[a] < arrB[b]:
+            #add the lower arrA[a] into the merged arr
+            merged_arr[i] = arrA[a]
+            a+=1
+        #if b element at arrB is smaller than put into merged array and iterate both   
     return merged_arr
 
 # TO-DO: implement the Merge Sort function below recursively
